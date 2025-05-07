@@ -1,0 +1,32 @@
+name "ATM10_HNN_SETUP"
+EVERY 20 TICKS DO
+    -- SETUP
+    INPUT forge_energy:: FROM power_source WEST SIDE
+    OUTPUT RETAIN 5120 forge_energy:: TO EACH loot_fab
+
+    INPUT forge_energy:: FROM power_source WEST SIDE
+    OUTPUT RETAIN 51200 forge_energy:: TO EACH sim_chamber
+    
+    INPUT hostilenetworks:prediction_matrix FROM interface
+    OUTPUT RETAIN 1 hostilenetworks:prediction_matrix TO EACH sim_chamber
+
+    -- NETHER STAR
+    INPUT hostilenetworks:prediction FROM sim_chamber_wither
+    OUTPUT RETAIN 1 hostilenetworks:prediction TO EACH loot_fab_wither
+
+    INPUT nether_star FROM loot_fab_wither
+    OUTPUT TO interface
+
+    INPUT end_prediction FROM sim_chamber_wither
+    OUTPUT TO interface
+
+    -- EMERALD
+    INPUT hostilenetworks:prediction FROM sim_chamber_evoker
+    OUTPUT RETAIN 1 hostilenetworks:prediction TO EACH loot_fab_evoker
+
+    INPUT emerald FROM loot_fab_evoker
+    OUTPUT TO interface
+
+    INPUT overworld_prediction FROM sim_chamber_evoker
+    OUTPUT TO interface
+END
