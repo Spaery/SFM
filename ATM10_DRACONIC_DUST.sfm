@@ -1,0 +1,29 @@
+name "ATM10_DRACONIC_DUST"
+EVERY 20 TICKS DO
+    INPUT glass_bottle FROM interface
+    OUTPUT RETAIN 64 glass_bottle TO hive
+
+    INPUT configurable_comb FROM hive
+    OUTPUT configurable_comb TO EACH centrifuge
+
+    INPUT minecraft:honeycomb FROM hive
+    OUTPUT minecraft:honeycomb TO interface
+
+    INPUT minecraft:honey_bottle FROM hive
+    OUTPUT minecraft:honey_bottle TO interface
+
+    INPUT the_bumblezone:pollen_puff FROM hive
+    OUTPUT the_bumblezone:pollen_puff TO interface
+
+    INPUT wax FROM centrifuge
+    OUTPUT wax TO interface
+
+    INPUT draconic_dust FROM centrifuge
+    OUTPUT draconic_dust TO interface
+    
+    INPUT fluid:productivebees:honey FROM centrifuge
+    OUTPUT fluid:productivebees:honey TO basin
+
+    INPUT item:minecraft:honey_block FROM basin TOP SIDE
+    OUTPUT item:minecraft:honey_block TO interface
+END
