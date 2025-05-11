@@ -10,6 +10,9 @@ EVERY 20 TICKS DO
     INPUT hostilenetworks:prediction_matrix FROM interface
     OUTPUT RETAIN 1 hostilenetworks:prediction_matrix TO EACH sim_chamber
 
+    INPUT warden_soul FROM interface
+    OUTPUT RETAIN 1 warden_soul TO EACH loot_fab
+
     -- NETHER STAR
     INPUT hostilenetworks:prediction FROM sim_chamber_wither
     OUTPUT hostilenetworks:prediction TO loot_fab_wither ROUND ROBIN BY BLOCK
@@ -32,7 +35,7 @@ EVERY 20 TICKS DO
 
     -- PIGLICH HEART
     INPUT hostilenetworks:prediction FROM sim_chamber_piglich
-    OUTPUT hostilenetworks:prediction TO loot_fab_piglin ROUND ROBIN BY BLOCK
+    OUTPUT hostilenetworks:prediction TO loot_fab_piglich ROUND ROBIN BY BLOCK
 
     INPUT piglich_heart FROM loot_fab_piglich
     OUTPUT TO interface
